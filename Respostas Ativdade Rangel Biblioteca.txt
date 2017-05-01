@@ -1,0 +1,74 @@
+----------- LISTA DE CONSULTAS --------
+
+--A) Recupere todos os usuários do tipo aluno que começam com a letra ‘A’?
+
+select * from tipo_usuario natural join usuario 
+where nome_completo ilike 'a%' and  descricao = 'ALUNO';
+
+--B) Selecione todos os usuários que fizeram algum empréstimo?
+
+select DISTINCT nome_completo usuarios_fizeram_emprestimo,data_emprestimo from usuario natural join emprestimo;
+
+--C) Selecione o título de todas as publicações que foram emprestadas pelo usuário ‘Luis’?
+
+-- Que o usuario Luis pegou emprestado?
+
+select nome_completo Nome_Usuario,titulo from usuario join emprestimo using (id_usuario)  
+join exemplar using (id_exemplar) join publicacao using (id_publicacao)
+where nome_usuario ilike 'luis';
+
+-- Que o funcionario Luis emprestou? 
+
+select nome Nome_Funcionario,titulo from funcionario join emprestimo using (matricula) 
+join exemplar using (id_exemplar) join publicacao using (id_publicacao)
+where nome ilike 'luis%';
+
+--D) Selecione o nome de todos os usuários que reservaram o livro “PostgreSQL”?
+
+select nome_usuario,data_reserva,titulo from usuario join reserva using(id_usuario)
+join publicacao using (id_publicacao) 
+where titulo ilike 'postgresql'; 
+
+--E) Selecione os nomes dos usuários que fizeram o empréstimo dos livros “Arte da guerra” e “O meu chefe é um idiota”?
+
+select nome_usuario,titulo,data_emprestimo from usuario join emprestimo using(id_usuario)
+ join exemplar using(id_exemplar) join publicacao using (id_publicacao)
+where titulo ilike 'arte da guerra' or titulo ilike 'o meu chefe é um idiota';
+
+
+--F) Quais os tipos de publicações foram reservadas pelos usuários do tipo professor?
+
+select nome_completo professores_reservaram,tipo_publicacao.descricao tipo_publicacao from
+ tipo_publicacao join publicacao using(id_tipo_publicacao) join reserva using(id_publicacao)
+ join usuario using(id_usuario) join tipo_usuario using(id_tipo_usuario)
+where tipo_usuario.descricao ilike 'professor';
+
+
+select distinct tipo_publicacao.descricao publicacoes_reservadas_professor from
+ tipo_publicacao join publicacao using(id_tipo_publicacao) join reserva using(id_publicacao)
+ join usuario using(id_usuario) join tipo_usuario using(id_tipo_usuario)
+where tipo_usuario.descricao ilike 'professor'; 
+
+--G) Quais publicações ainda não foram emprestadas?
+
+select  titulo publicacoes_sem_emprestimos from publicacao
+ join exemplar using(id_publicacao) right join emprestimo using(id_exemplar)
+where data_emprestimo isnull;
+
+-- e quando tem mais de um exemplar na biblioteca.....
+
+select titulo,data_emprestimo from emprestimo 
+join exemplar using (id_exemplar)right join publicacao using (id_publicacao) 
+where emprestimo.id_exemplar isnull
+
+
+-- H) Quais os títulos e o tipo das publicações que ainda não foram reservadas?
+
+select titulo Titulos_Nao_Reservados,descricao,data_reserva from 
+tipo_publicacao join publicacao using(id_tipo_publicacao) left join reserva using (id_publicacao)
+where data_reserva isnull;
+
+--Questão extra de update
+
+update tipo_publicacao set descricao='MONOGRAFIA'
+where descricao='MANOGRAFIA'

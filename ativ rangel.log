@@ -1,0 +1,584 @@
+-- Executing query:
+create table tipo_usuario (
+id_tipo_usuario integer
+descricao       varchar(50)
+qtd_dias_emprestimo integer
+qtd_publicacoes integer
+valor_multa numeric(8.2)
+);
+ERRO:  erro de sintaxe em ou próximo a "descricao"
+LINE 3: descricao       varchar(50)
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "descricao"
+SQL state: 42601
+Character: 53
+
+-- Executing query:
+create table tipo_usuario (
+id_tipo_usuario integer,
+descricao       varchar(50),
+qtd_dias_emprestimo integer,
+qtd_publicacoes integer,
+valor_multa numeric(8.2)
+);
+
+ERRO:  sintaxe de entrada é inválida para integer: "8.2"
+LINE 6: valor_multa numeric(8.2)
+                    ^
+
+********** Error **********
+
+ERRO: sintaxe de entrada é inválida para integer: "8.2"
+SQL state: 22P02
+Character: 149
+
+-- Executing query:
+-- Database: "Biblioteca"
+
+-- DROP DATABASE "Biblioteca";
+
+CREATE DATABASE "Biblioteca"
+  WITH OWNER = postgres
+       ENCODING = 'UTF8'
+       TABLESPACE = pg_default
+       LC_COLLATE = 'Portuguese_Brazil.1252'
+       LC_CTYPE = 'Portuguese_Brazil.1252'
+       CONNECTION LIMIT = -1;
+
+create table tipo_usuario (
+id_tipo_usuario integer,
+descricao       varchar(50),
+qtd_dias_emprestimo integer,
+qtd_publicacoes integer,
+valor_multa numeric(8,2)
+);
+
+
+ERRO:  CREATE DATABASE não pode ser executada a partir de uma função ou cadeia de caracteres com múltiplos comandos
+********** Error **********
+
+ERRO: CREATE DATABASE não pode ser executada a partir de uma função ou cadeia de caracteres com múltiplos comandos
+SQL state: 25001
+
+-- Executing query:
+create table tipo_usuario (
+id_tipo_usuario integer,
+descricao       varchar(50),
+qtd_dias_emprestimo integer,
+qtd_publicacoes integer,
+valor_multa numeric(8,2)
+);
+Query returned successfully with no result in 61 ms.
+
+-- Executing query:
+select * from tipo_usuario
+Total query runtime: 11 ms.
+0 rows retrieved.
+
+-- Executing query:
+alter table tipo_usuario add primary key
+
+ERRO:  erro de sintaxe no fim da entrada
+LINE 2: 
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe no fim da entrada
+SQL state: 42601
+Character: 42
+
+-- Executing query:
+alter table tipo_usuario add primary key;
+ERRO:  erro de sintaxe em ou próximo a ";"
+LINE 1: alter table tipo_usuario add primary key;
+                                                ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ";"
+SQL state: 42601
+Character: 41
+
+-- Executing query:
+alter table tipo_usuario add primary key (id_tipo_usuario);
+Query returned successfully with no result in 171 ms.
+
+-- Executing query:
+alter table tipo_usuario add not null (id_tipo_usuario);
+ERRO:  erro de sintaxe em ou próximo a "not"
+LINE 1: alter table tipo_usuario add not null (id_tipo_usuario);
+                                     ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "not"
+SQL state: 42601
+Character: 30
+
+-- Executing query:
+alter table tipo_usuario alter column id_tipo_usuario set not null;
+Query returned successfully with no result in 11 ms.
+
+-- Executing query:
+alter table tipo_usuario alter column descricao set not null;
+Query returned successfully with no result in 12 ms.
+
+-- Executing query:
+alter table tipo_usuario drop primary key (id_tipo_usuario);
+ERRO:  erro de sintaxe em ou próximo a "primary"
+LINE 1: alter table tipo_usuario drop primary key (id_tipo_usuario);
+                                      ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "primary"
+SQL state: 42601
+Character: 31
+
+-- Executing query:
+alter table tipo_usuario alter column id_tipo_usuario  drop primary key;
+ERRO:  erro de sintaxe em ou próximo a "primary"
+LINE 1: ...e tipo_usuario alter column id_tipo_usuario  drop primary ke...
+                                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "primary"
+SQL state: 42601
+Character: 61
+
+-- Executing query:
+alter table tipo_usuario drop column id_tipo_usuario;
+Query returned successfully with no result in 91 ms.
+
+-- Executing query:
+alter table tipo_usuario add column id_tipo_usuario integer;
+Query returned successfully with no result in 11 ms.
+
+-- Executing query:
+alter table tipo_usuario add column id_tipo_usuario integer;
+ERRO:  coluna "id_tipo_usuario" da relação "tipo_usuario" já existe
+********** Error **********
+
+ERRO: coluna "id_tipo_usuario" da relação "tipo_usuario" já existe
+SQL state: 42701
+
+-- Executing query:
+alter table tipo_usuario add constraint tipo_usuario_pk primary key (id_tipo_usuario);
+Query returned successfully with no result in 131 ms.
+
+-- Executing query:
+alter table tipo_usuario alter column id_tipo_usuario set not null;
+Query returned successfully with no result in 11 ms.
+
+-- Executing query:
+select * from tipo_usuario
+Total query runtime: 11 ms.
+0 rows retrieved.
+
+-- Executing query:
+create table funcionario (
+matricula integer primary key,
+nome varchar (50),
+)
+ERRO:  erro de sintaxe em ou próximo a ")"
+LINE 4: )
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ")"
+SQL state: 42601
+Character: 78
+
+-- Executing query:
+create table funcionario (
+matricula integer primary key,
+nome varchar (50)
+)
+Query returned successfully with no result in 101 ms.
+
+-- Executing query:
+select * from funcionario
+Total query runtime: 11 ms.
+0 rows retrieved.
+
+-- Executing query:
+drop table funcionario
+Query returned successfully with no result in 92 ms.
+
+-- Executing query:
+select * from funcionario
+ERRO:  relação "funcionario" não existe
+LINE 1: select * from funcionario
+                      ^
+********** Error **********
+
+ERRO: relação "funcionario" não existe
+SQL state: 42P01
+Character: 15
+
+-- Executing query:
+create table funcionario(
+matricula integer,
+nome varchar (50),
+senha varchar(20)
+)
+Query returned successfully with no result in 121 ms.
+
+-- Executing query:
+alter table funcionario add constraint funcionario_pk primary key (matricula);
+Query returned successfully with no result in 121 ms.
+
+-- Executing query:
+alter table funcionario alter column matricula set not null;
+Query returned successfully with no result in 11 ms.
+
+-- Executing query:
+alter table funcionario alter column nome, senha set not null:
+ERRO:  erro de sintaxe em ou próximo a ","
+LINE 1: alter table funcionario alter column nome, senha set not nul...
+                                                 ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ","
+SQL state: 42601
+Character: 42
+
+-- Executing query:
+alter table funcionario alter column nome and senha set not null;
+ERRO:  erro de sintaxe em ou próximo a "and"
+LINE 1: alter table funcionario alter column nome and senha set not ...
+                                                  ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "and"
+SQL state: 42601
+Character: 43
+
+-- Executing query:
+alter table funcionario alter column nome , senha set not null;
+ERRO:  erro de sintaxe em ou próximo a ","
+LINE 1: alter table funcionario alter column nome , senha set not nu...
+                                                  ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a ","
+SQL state: 42601
+Character: 43
+
+-- Executing query:
+alter table funcionario alter column (nome ,senha) set not null;
+ERRO:  erro de sintaxe em ou próximo a "("
+LINE 1: alter table funcionario alter column (nome ,senha) set not n...
+                                             ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "("
+SQL state: 42601
+Character: 38
+
+-- Executing query:
+alter table funcionario alter column nome and column senha set not null;
+ERRO:  erro de sintaxe em ou próximo a "and"
+LINE 1: alter table funcionario alter column nome and column senha s...
+                                                  ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "and"
+SQL state: 42601
+Character: 43
+
+-- Executing query:
+alter table funcionario alter column nome column senha set not null;
+ERRO:  erro de sintaxe em ou próximo a "column"
+LINE 1: alter table funcionario alter column nome column senha set n...
+                                                  ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "column"
+SQL state: 42601
+Character: 43
+
+-- Executing query:
+alter table funcionario alter column nome set not null;
+Query returned successfully with no result in 71 ms.
+
+-- Executing query:
+alter table funcionario alter column senha set not null;
+Query returned successfully with no result in 11 ms.
+
+-- Executing query:
+create table tipo_publicacao (
+id_tipo_pulicacao serial,
+descricao varchar (50)
+)
+Query returned successfully with no result in 94 ms.
+
+-- Executing query:
+insert table tipo_publicacao values('jornal')
+ERRO:  erro de sintaxe em ou próximo a "table"
+LINE 1: insert table tipo_publicacao values('jornal')
+               ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "table"
+SQL state: 42601
+Character: 8
+
+-- Executing query:
+insert into table tipo_publicacao values('jornal')
+ERRO:  erro de sintaxe em ou próximo a "table"
+LINE 1: insert into table tipo_publicacao values('jornal')
+                    ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "table"
+SQL state: 42601
+Character: 13
+
+-- Executing query:
+insert table tipo_publicacao into descricao values('jornal')
+ERRO:  erro de sintaxe em ou próximo a "table"
+LINE 1: insert table tipo_publicacao into descricao values('jornal')
+               ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "table"
+SQL state: 42601
+Character: 8
+
+-- Executing query:
+insert into descricao table tipo_publicacao  values('jornal')
+ERRO:  erro de sintaxe em ou próximo a "values"
+LINE 1: insert into descricao table tipo_publicacao  values('jornal'...
+                                                     ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "values"
+SQL state: 42601
+Character: 46
+
+-- Executing query:
+insert into tipo_publicacao  values('jornal')
+ERRO:  sintaxe de entrada é inválida para integer: "jornal"
+LINE 1: insert into tipo_publicacao  values('jornal')
+                                            ^
+********** Error **********
+
+ERRO: sintaxe de entrada é inválida para integer: "jornal"
+SQL state: 22P02
+Character: 37
+
+-- Executing query:
+insert into tipo_publicacao  values("jornal")
+ERRO:  coluna "jornal" não existe
+LINE 1: insert into tipo_publicacao  values("jornal")
+                                            ^
+********** Error **********
+
+ERRO: coluna "jornal" não existe
+SQL state: 42703
+Character: 37
+
+-- Executing query:
+select * from tipo_publicacao
+Total query runtime: 11 ms.
+0 rows retrieved.
+
+-- Executing query:
+insert into tipo_publicacao descricao values("jornal")
+ERRO:  erro de sintaxe em ou próximo a "descricao"
+LINE 1: insert into tipo_publicacao descricao values("jornal")
+                                    ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "descricao"
+SQL state: 42601
+Character: 29
+
+-- Executing query:
+insert into tipo_publicacao (descricao) values('jornal')
+Query returned successfully: one row affected, 11 ms execution time.
+
+-- Executing query:
+select * from tipo_publicacao
+Total query runtime: 11 ms.
+1 row retrieved.
+
+-- Executing query:
+alter table funcionario alter column matricula set serial;
+ERRO:  erro de sintaxe em ou próximo a "serial"
+LINE 1: alter table funcionario alter column matricula set serial;
+                                                           ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "serial"
+SQL state: 42601
+Character: 52
+
+-- Executing query:
+drop table funcionario
+Query returned successfully with no result in 81 ms.
+
+-- Executing query:
+create table funcionario(
+matricula serial,
+nome varchar (50),
+senha varchar(20)
+);
+alter table funcionario alter column matricula set not null;
+alter table funcionario alter column nome set not null;
+alter table funcionario alter column senha set not null;
+alter table funcionario add constraint funcionario_pk primary key (matricula);
+Query returned successfully with no result in 192 ms.
+
+-- Executing query:
+drop table tipo_usuario
+Query returned successfully with no result in 73 ms.
+
+-- Executing query:
+create table tipo_usuario (
+id_tipo_usuario serial,
+descricao       varchar(50),
+qtd_dias_emprestimo integer,
+qtd_publicacoes integer,
+valor_multa numeric(8,2)
+);
+
+alter table tipo_usuario alter column id_tipo_usuario set not null;
+alter table tipo_usuario alter column descricao set not null;
+alter table tipo_usuario alter column qtd_dias_emprestimo set not null;
+alter table tipo_usuario add constraint tipo_usuario_pk primary key (id_tipo_usuario);
+Query returned successfully with no result in 81 ms.
+
+-- Executing query:
+create table tipo_publicacao (
+id_tipo_pulicacao serial,
+descricao varchar (50)
+);
+alter table tipo_publicacao alter column id_tipo_publicacao set not null;
+alter table tipo_publicacao alter column descricao set not null;
+alter table funcionario add constraint funcionario_pk primary key (matricula);
+ERRO:  relação "tipo_publicacao" já existe
+********** Error **********
+
+ERRO: relação "tipo_publicacao" já existe
+SQL state: 42P07
+
+-- Executing query:
+alter table tipo_publicacao alter column id_tipo_publicacao set not null;
+alter table tipo_publicacao alter column descricao set not null;
+alter table funcionario add constraint funcionario_pk primary key (matricula);
+
+ERRO:  coluna "id_tipo_publicacao" da relação "tipo_publicacao" não existe
+********** Error **********
+
+ERRO: coluna "id_tipo_publicacao" da relação "tipo_publicacao" não existe
+SQL state: 42703
+
+-- Executing query:
+drop table tipo_publicacao
+Query returned successfully with no result in 91 ms.
+
+-- Executing query:
+create table tipo_publicacao (
+id_tipo_publicacao serial,
+descricao varchar (50)
+);
+alter table tipo_publicacao alter column id_tipo_publicacao set not null;
+alter table tipo_publicacao alter column descricao set not null;
+alter table tipo_publicacao add constraint tipo_publicacao_pk primary key (id_tipo_publicacao);
+
+Query returned successfully with no result in 111 ms.
+
+-- Executing query:
+create table usuario(
+id_usuario serial,
+nome_completo varchar(40),
+nome_usuario varchar(21),
+senha varchar(21)
+id_tipo_usuario integer
+)
+ERRO:  erro de sintaxe em ou próximo a "id_tipo_usuario"
+LINE 6: id_tipo_usuario integer
+        ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "id_tipo_usuario"
+SQL state: 42601
+Character: 113
+
+-- Executing query:
+create table usuario(
+id_usuario serial,
+nome_completo varchar(40),
+nome_usuario varchar(21),
+senha varchar(21),
+id_tipo_usuario integer
+)
+Query returned successfully with no result in 91 ms.
+
+-- Executing query:
+alter table usuario alter column id_usuario set not null;
+alter table usuario alter column nome_completo set not null;
+alter table usuario alter column nome_usuario set not null;
+alter table usuario alter column senha set not null;
+alter table usuario alter column id_tipo_usuario set not null;
+alter table usuario add constraint usuario_pk primary key (id_usuario);
+alter table usuario add constraint usuario_fk foreign key (id_tipo_usuario) references tipo_usuario (id_tipo_usuario) ; 
+Query returned successfully with no result in 302 ms.
+
+-- Executing query:
+create table publicacao(
+id_publicacao serial,
+titulo varchar(50),
+ano_publicacao integer,
+id_tipo_publicacao integer
+);
+alter table publicacao alter column id_usuario set not null;
+alter table publicacao alter column titulo set not null;
+alter table publicacao alter column ano_publicacao set not null;
+alter table publicacao alter column id_tipo_publicacao set not null;
+alter table publicacao add constraint publicacao_pk primary key (id_publicacao);
+alter table publicacao add constraint publicacao_fk foreign key (id_tipo_publicacao) reference tipo_publicacao(id_tipo_publicacao); 
+ERRO:  erro de sintaxe em ou próximo a "reference"
+LINE 12: ...nt publicacao_fk foreign key (id_tipo_publicacao) reference ...
+                                                              ^
+********** Error **********
+
+ERRO: erro de sintaxe em ou próximo a "reference"
+SQL state: 42601
+Character: 540
+
+-- Executing query:
+create table publicacao(
+id_publicacao serial,
+titulo varchar(50),
+ano_publicacao integer,
+id_tipo_publicacao integer
+);
+alter table publicacao alter column id_usuario set not null;
+alter table publicacao alter column titulo set not null;
+alter table publicacao alter column ano_publicacao set not null;
+alter table publicacao alter column id_tipo_publicacao set not null;
+alter table publicacao add constraint publicacao_pk primary key (id_publicacao);
+alter table publicacao add constraint publicacao_fk foreign key (id_tipo_publicacao) references tipo_publicacao(id_tipo_publicacao); 
+ERRO:  coluna "id_usuario" da relação "publicacao" não existe
+********** Error **********
+
+ERRO: coluna "id_usuario" da relação "publicacao" não existe
+SQL state: 42703
+
+-- Executing query:
+create table publicacao(
+id_publicacao serial,
+titulo varchar(50),
+ano_publicacao integer,
+id_tipo_publicacao integer
+);
+alter table publicacao alter column id_publicacao set not null;
+alter table publicacao alter column titulo set not null;
+alter table publicacao alter column ano_publicacao set not null;
+alter table publicacao alter column id_tipo_publicacao set not null;
+alter table publicacao add constraint publicacao_pk primary key (id_publicacao);
+alter table publicacao add constraint publicacao_fk foreign key (id_tipo_publicacao) references tipo_publicacao(id_tipo_publicacao); 
+Query returned successfully with no result in 173 ms.
+
